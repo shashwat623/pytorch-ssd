@@ -43,7 +43,7 @@ init_net_txt_path = f"models/{net_type}_init_net.pbtxt"
 predict_net_path = f"models/{net_type}_predict_net.pb"
 predict_net_txt_path = f"models/{net_type}_predict_net.pbtxt"
 
-dummy_input = torch.randn(1, 3, 300, 300).to("cuda")
+dummy_input = torch.randn(1, 3, 300, 300, device = "cpu")
 print(dummy_input.dtype)
 torch.onnx.export(net, dummy_input, model_path, verbose=False, output_names=['scores', 'boxes'])
 
